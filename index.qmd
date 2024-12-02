@@ -1,0 +1,48 @@
+---
+title: "Primera Presentación"
+author: "Shengnan Li"
+output:
+  revealjs:
+    width: 1050
+    height: 700
+    margin: 0.1
+    center: false
+    navigationMode: linear
+    controlsLayout: edges
+    controlsTutorial: false
+    hash: true
+    history: true
+    hashOneBasedIndex: false
+    fragmentInURL: false
+    transition: none
+    backgroundTransition: none
+    pdfSeparateFragments: false
+    lang: en
+    auto-stretch: true
+link-citations: true
+---
+
+
+```{r}
+load("~/uni/master/software.bio/trabajo_software/datos/accidentes2020_data.rda")
+library(tidyverse)
+```
+
+
+---
+## Resumen
+
+```{r}
+resumen <- accidentes2020_data |> count(sexo)
+resumen
+```
+
+---
+## Visualizacion
+```{r}
+#| code-fold: true
+ggplot(resumen) +
+  geom_col(aes(x = sexo, y = n, fill = sexo),alpha = 0.6) +
+  ggthemes::scale_fill_colorblind()+
+  theme_minimal()
+```
